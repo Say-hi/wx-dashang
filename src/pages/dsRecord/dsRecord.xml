@@ -1,0 +1,8 @@
+
+<view class="lists" wx:for="{{ lists }}">
+  <view class="time">{{ item.time }}</view>
+  <view>{{ item.shop }}</view>
+  <view>{{ item.name }}</view>
+  <view class="money">{{ item.money }}</view>
+</view>
+

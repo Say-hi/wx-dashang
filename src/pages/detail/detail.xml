@@ -1,0 +1,65 @@
+
+<swiper class="carousel" indicator-active-color="{{indicatorActiveColor}}" indicator-color="{{indicatorColor}}" circular="{{ circular }}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper-item class="carousel-item" wx:for="{{imgUrls}}">
+    <image mode="aspectFill" src="{{item}}" class="slide-image" width="355" height="150"/>
+  </swiper-item>
+</swiper>
+
+<view class="shop-top">
+  <image mode="aspectFill" class="br" src="{{ src }}"></image>
+  <view class="name">{{ name }}</view>
+  <view catchtap="nearShow" class="near">查看附近其他店面</view>
+  <view class="dz">点赞/打赏</view>
+</view>
+
+<swiper class="sw" current="{{ current }}" circular="{{ circular }}">
+  <!--特色-->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height: 100%;">
+      <view class="shop-a">
+        <view>店家地址:{{ address }}</view>
+        <view bindtap="callPhone">联系电话: {{ tel }}</view>
+      </view>
+
+      <view class="iconfont icon-liwu">
+        特色
+      </view>
+
+      <view class="shop-b" wx:for="{{ lists }}">
+        <scroll-view scroll-x="true" class="shop-b-s">
+          <view class="s-b-s-w">
+            <view class="s-b-s-w-m">
+              <image mode="aspectFill" src="{{ item.img }}"></image>
+            </view>
+            <view class="s-b-r">
+              <view class="s-b-r-n">{{ item.name }}</view>
+              <view class="s-b-r-i">{{ item.introduce }}</view>
+              <view class="s-star">
+                <view data-index="{{ index }}" catchtap="dianzan" class="iconfont icon-xin {{ item.dj === 1 ? 'star' : '' }}">点赞 {{ item.star }}</view>
+                <!--<view class="count" wx:if="{{ item.count }}">{{ item.count }}评价</view>-->
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view class="dd">--- 到底啦 ---</view>
+    </scroll-view>
+  </swiper-item>
+  <!--附近门店-->
+  <swiper-item>
+    <scroll-view scroll-y="true">
+      <view class="search">
+        <input placeholder="请输入店名或者地址"/>
+      </view>
+      <navigator url="../detail/detail?id={{ item.id }}" open-type="redirect" class="nearShop" wx:for="{{ nearShop }}">
+        <view class="iconfont icon-dingwei">
+          <view>{{ item.name }}</view>
+          <view>{{ item.address }}</view>
+        </view>
+        <view class="n-d"><text>{{ item.distance }}</text>米</view>
+      </navigator>
+      <view class="noNear" wx:if="{{ nearShop.length == 0 }}">--- 暂无内容哦 ---</view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

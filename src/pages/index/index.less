@@ -1,0 +1,70 @@
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 122rpx;
+  padding: 0 20rpx;
+  .address {
+    margin-right: 20rpx;
+  }
+  .s-s {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    position: relative;
+    .icon-sousuo {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(20rpx, -50%);
+    }
+    input {
+      flex: 1;
+      background-color: #eee;
+      border-radius: 8rpx;
+      //line-height: 70rpx;
+      height: 70rpx;
+      font-size: 24rpx;
+      padding-left: 76rpx;
+    }
+  }
+}
+
+.hot {
+  font-size: 30rpx;
+  line-height: 76rpx;
+  box-shadow: 0 0 6rpx 4rpx #e9e9e9;
+  padding: 0 20rpx;
+}
+.icon-hot::before {
+  color: #fd462e;
+  font-size: 40rpx;
+  vertical-align: middle;
+}
+
+.hot-content {
+  width: 708rpx;
+  height: 220rpx;
+  margin: 20rpx auto;
+  box-shadow: 0 0 6rpx 2rpx #d2f5fe;
+  background-color: #d2f5fe;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10rpx;
+  image {
+    width: 100%;
+    height: 100%;
+  }
+  view {
+    position: absolute;
+    bottom: 40rpx;
+    left: 0;
+    width: 100%;
+    font-size: 30rpx;
+    color: #fff;
+    line-height: 56rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    background-color: rgba(0,0,0,0.5);
+  }
+}

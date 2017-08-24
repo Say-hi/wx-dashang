@@ -1,0 +1,31 @@
+page {
+  background-color: #eee;
+}
+
+.lists {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  line-height: 76rpx;
+  font-size: 30rpx;
+  justify-content: space-around;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  view {
+    text-align: center;
+    flex: 1;
+  }
+  .time {
+    line-height: 40rpx;
+  }
+  .money {
+    color: #f24646;
+  }
+}
+.lists:nth-child(1) {
+  margin-top: 0;
+  box-shadow: 0 0 10rpx 4rpx #d9d9d9;
+  .money {
+    color: #000;
+  }
+}

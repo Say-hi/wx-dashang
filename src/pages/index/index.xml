@@ -1,0 +1,24 @@
+<!--轮播图导航-->
+<swiper class="carousel" indicator-active-color="{{indicatorActiveColor}}" indicator-color="{{indicatorColor}}" circular="{{ circular }}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper-item class="carousel-item" wx:for="{{imgUrls}}">
+    <image mode="aspectFill" src="{{item}}" class="slide-image" width="355" height="150"/>
+  </swiper-item>
+</swiper>
+
+<!--搜索栏-->
+<view class="search">
+  <view class="address iconfont icon-dingwei">{{ city }}</view>
+  <view class="s-s">
+    <view class="iconfont icon-sousuo"></view>
+    <input bindconfirm="inputConfirm" bindinput="inputValue" confirm-type="search" data-type="search" placeholder="请输入您需要的商品信息" />
+  </view>
+</view>
+
+<view class="hot iconfont icon-hot">
+  {{ hotText }}
+</view>
+
+<navigator url="../detail/detail?id={{ item.id }}" wx:for="{{ lists }}" class="hot-content">
+  <image mode="aspectFill" src="{{ item.img }}"></image>
+  <view>{{ item.introduce }}</view>
+</navigator>

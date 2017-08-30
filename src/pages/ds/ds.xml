@@ -1,0 +1,6 @@
+<view class="top">
+  <view class="t-t">
+    <image class="bg" src="{{ dy.bg }}"></image>
+    <image class="br" src="{{ dy.img }}"></image>
+  </view>
+</view>

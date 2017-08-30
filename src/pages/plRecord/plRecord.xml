@@ -1,4 +1,4 @@
-<view class="comment" wx:for="{{ lists }}">
+<navigator url="../plDetail/plDetail?id={{ item.id }}" class="comment" wx:for="{{ lists }}">
   <view class="time">{{ item.time }}在{{ item.shop }}发布评论</view>
   <view class="l-c l2">{{ item.comment }}</view>
-</view>
+</navigator>

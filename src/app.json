@@ -3,11 +3,17 @@
   // First is default to view
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
   "pages": [
+    "pages/ds/ds", // 打赏界面
+    "pages/pDetail/pDetail", // 问题详情
+    "pages/problem/problem", // 常见问题
+    "pages/plDetail/plDetail", // 评论详情
+    "pages/index/index", // 打赏首页
     "pages/plRecord/plRecord", // 评论记录
     "pages/dsRecord/dsRecord", // 打赏记录
     "pages/user/user", // 用户个人中心
-    "pages/detail/detail", // 商店详情页
-    "pages/index/index" // 打赏首页
+    "pages/detail/detail" // 商店详情页,,
+
+    // Dont remove this comment
   ],
   // Window configuration
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#window
@@ -46,7 +52,7 @@
         },
         {
           "text": "打赏",
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/ds/ds",
           "iconPath": "images/dashang.png",
           "selectedIconPath": "images/dashang_hl.png"
         },

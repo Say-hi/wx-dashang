@@ -1,0 +1,3 @@
+<navigator url="../pDetail/pDetail?id={{ item.id }}"  wx:for="{{ lists }}" class="arrow">
+  {{ item.text }}
+</navigator>

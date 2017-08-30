@@ -1,0 +1,4 @@
+<view class="top">{{ time }}在<text>{{ shop }}</text>发表评论</view>
+<view class="title">您的评论</view>
+<view class="content">{{ comment }}</view>
+<image data-index="{{ index }}" catchtap="showImg" mode="aspectFill" wx:for="{{ imgArr }}" src="{{ item }}"></image>

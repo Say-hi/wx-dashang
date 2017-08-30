@@ -33,7 +33,7 @@
             </view>
             <view class="s-b-r">
               <view class="s-b-r-n">{{ item.name }}</view>
-              <view class="s-b-r-i">{{ item.introduce }}</view>
+              <view class="s-b-r-i l2">{{ item.introduce }}</view>
               <view class="s-star">
                 <view data-index="{{ index }}" catchtap="dianzan" class="iconfont icon-xin {{ item.dj === 1 ? 'star' : '' }}">点赞 {{ item.star }}</view>
                 <!--<view class="count" wx:if="{{ item.count }}">{{ item.count }}评价</view>-->

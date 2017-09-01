@@ -1,181 +1,103 @@
-/*eslint-disable*/
 /**
- * Created by JiangWenqiang on 2017/5/3.
+ * Created by Administrator on 2017/8/25.
  */
-/**
- * 扫描二维码
- * @param callbackSuccess
- * @param callbackFail
- */
-function scanCode (callbackSuccess, callbackFail) {
-  wx.scanCode({
-    success (res) {
-      callbackSuccess(res)
-    },
-    fail (res) {
-      callbackFail(res)
-    }
-  })
-}
-/**
- * 数据请求
- * @param obj
- */
-function wxRequest (obj) {
-  wx.request(obj)
-}
+const app = getApp()
+const serviceUrl = require('./service')
+
 module.exports = {
-  scanCode,
-  wxRequest
-}
-/**
- *  用户微信授权登陆
- */
-function login (obj) {
-  var loginSuccess = obj.success || function () {
-      console.log('未传入success回调函数')
-    }
-  var loginFail = obj.success || function () {
-      console.log('未传入fail回调函数')
-    }
-  wx.login({
-    success: function success (res) {
-      // console.log(res.code)
-      loginSuccess(res)
-    },
-    fail: function fail (res) {
-      loginFail(res)
-    }
-  })
-}
-
-/**
- * 获取用户微信信息
- * @param obj
- */
-function getUserInfo (obj) {
-  var getUserSuccess = obj.success || function () {
-      console.log('未传入success回调函数')
-    }
-  var getUserFail = obj.fail || function () {
-      wx.showModal({
-        title: '未提供权限',
-        content: '请删除小程序后重新打开并授权',
-        showCancel: false
-      })
-    }
-  wx.getUserInfo({
-    // 默认获取用户带加密数据的信息
-    withCredentials: obj.withCredentials || false,
-    success: function success (res) {
-      getUserSuccess(res)
-    },
-    fail: function fail (res) {
-      getUserFail(res)
-    }
-  })
-}
-
-/**
- * 服务器获取用户session_key
- */
-function getSessionKey(obj) {
-  this.requestInfo(obj)
-}
-
-/**
- * 向服务器请求信息
- */
-function requestInfo(obj) {
-  wx.request({
-    url: obj.url || useUrl.serviceUrl.login,
-    method: obj.method || 'POST',
-    data: obj.data || {},
-    header: {
-      'content-type': obj.header || 'application/x-www-form-urlencoded'
-    },
-    success: obj.success || function () {
-      console.log('未传入success回调函数')
-    },
-    fail: obj.fail || function (err) {
-      console.log('未传入fail回调函数,err:' + err.errMsg)
-    },
-    complete: obj.complete || function () {}
-  })
-}
-
-/**
- * 登陆态检查
- */
-function sessionCheck() {
-  var that = this
-  wx.checkSession({
-    success: function success() {
-      console.log('session有效')
-      // that.mainLogin()
-    },
-    fail: function fail() {
-      console.log('session失效')
-      that.mainLogin()
-    }
-  })
-}
-
-/**
- * 主登陆函数
- */
-function mainLogin(_this, callback, callback2, callback3) {
-  var that = this
-  var loginObj = {
-    success: function success(params) {
-      // 获取用户登陆code
-      // console.log(res)
-      // 获取用户的session_key
-      // console.log('mainLogin' + res.code)
-      var obj = {
-        url: useUrl.serviceUrl.login + '?code=' + params.code,
-        method: 'GET',
-        // data: {
-        //   code: res.code
-        // },
-        header: 'application/json',
-        success: function success(res) {
-          // console.log(useUrl.serviceUrl.login + '?code=' + params.code)
-          // console.log(res)
-          // console.log(res.data.data.session_key)
-          // session_key 存储
-          that.data.session_key = res.data.data.session_key;
-          wx.setStorageSync('session_key', res.data.data.session_key);
-          if (callback) {
-            callback()
+  // 用户上传图片
+  /**
+   *
+   * @param those 上下文指向
+   * @param imgArr 要操作的的相册名
+   * @param count 最大上传数量限制
+   * @param callback 回调函数
+   */
+  upPhoto (those, imgArr, count, callback) {
+    let that = those
+    let obj = {
+      count: 6,
+      success (res) {
+        wx.hideLoading()
+        wx.showLoading({
+          title: '图片上传中',
+          mask: true
+        })
+        let coverImgArr = that.data[imgArr]
+        for (let i of res.tempFilePaths) {
+          let upImg = {
+            url: serviceUrl.uploadPhotos,
+            filePath: i,
+            formData: {
+              session_key: wx.getStorageSync('session_key'),
+              file: i
+            },
+            success (res) {
+              let jsonObj = JSON.parse(res.data).data.res_file
+              coverImgArr.push(jsonObj)
+              wx.hideLoading()
+              if (coverImgArr.length > count) {
+                wx.showToast({
+                  title: `超过${count}张啦,已删除多余的照片`,
+                  duration: 2000,
+                  mask: true
+                })
+              }
+              coverImgArr = coverImgArr.slice(0, count)
+              callback(those, coverImgArr)
+            },
+            fail (res) {
+              console.log('上传错误', res)
+              wx.hideLoading()
+              wx.showToast({
+                title: '图片上传失败，请重新尝试',
+                mask: true,
+                duration: 1000
+              })
+            }
           }
-          if (callback2) {
-            callback2()
-          }
-          if (callback3) {
-            callback3()
-          }
-        },
-        fail: function fail(res) {
-          console.log(res)
+          app.wxUpload(upImg)
         }
+      },
+      fail (err) {
+        console.log(err)
       }
-      that.getSessionKey(obj)
-      // 获取用户信息
-      var obj2 = {
-        success: function success(res) {
-          // console.log(res)
-          that.data.userInfo = res.userInfo
-          wx.setStorageSync('userInfo', res.userInfo)
-          if (_this) {
-            _this.setData({
-              userInfo: res.userInfo
-            })
-          }
-        }
-      }
-      that.getUserInfo(obj2)
     }
+    wx.chooseImage(obj)
+  },
+  // 删除图片
+  /**
+   *
+   * @param those 上下文指向
+   * @param e 含有data-index属性的e
+   * @param imgArr 要操作的的相册名
+   * @param callback 回调函数
+   */
+  delphoto (those, e, imgArr, callback) {
+    let that = those
+    let index = e.currentTarget.dataset.index
+    let photos = that.data[imgArr]
+    photos.splice(index, 1)
+    callback(those, photos)
+  },
+  // 展示图片
+  /**
+   *
+   * @param those 上下问指向
+   * @param e 含有data-index属性的e
+   * @param imgArrs 要预览的相册名
+   */
+  showImg (those, e, imgArrs) {
+    let index = e.currentTarget.dataset.index
+    let imgArr = those.data[imgArrs]
+    let newImgArr = []
+    for (let i of imgArr) {
+      newImgArr.push(i)
+    }
+    let obj = {
+      current: newImgArr[index],
+      urls: newImgArr
+    }
+    wx.previewImage(obj)
   }
-  that.login(loginObj)
 }

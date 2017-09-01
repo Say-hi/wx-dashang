@@ -1,0 +1,10 @@
+<view class="star-o" wx:for="{{ lists }}" wx:for-index="oi" wx:for-item="i"><text>{{ i }}</text><view class="star"><text data-oi="{{ oi }}" data-si="{{ index }}" catchtap="giveStar" wx:for="01234" class="{{ index <= start[oi] ? 'red' :  'grow' }} iconfont icon-xing"></text></view></view>
+<textarea placeholder="亲，您的评价对他人帮助很大哦"></textarea>
+<image catchtap="upPhoto" class="upImg" src="../../images/upImg.png"></image>
+<view class="imgWrap">
+  <view class="img-w" wx:for="{{ photos }}">
+    <image catchtap="showImg" data-index="{{ index }}" mode="widthFix" class="upImgShow" src="{{ item }}"></image>
+    <text class="del" catchtap="delImg" data-index="{{ index }}">×</text>
+  </view>
+</view>
+<view class="save">发表评论</view>

@@ -1,7 +1,13 @@
+page {
+  width: 100%;
+  height: 100%;
+}
+
 .top {
   padding: 24rpx 20rpx;
   width: 714rpx;
-  height: 415rpx;
+  //height: 415rpx;
+  height: 35%;
   margin: 0 auto;
   .t-t {
     border-radius: 10rpx;
@@ -21,8 +27,167 @@
       position: absolute;
       width: 214rpx;
       height: 214rpx;
-      bottom: 20rpx;
-      left: 20rpx;
+      bottom: 40rpx;
+      left: 40rpx;
     }
+    .pa {
+      position: absolute;
+      right: 0;
+      bottom: 30rpx;
+    }
+    .icon-xin {
+      bottom: 70rpx;
+      right: 100rpx;
+      font-weight: 700;
+    }
+    .icon-xin:after {
+      margin-right: 20rpx;
+    }
+    .star {
+      display: flex;
+      view {
+        margin-left: 20rpx;
+      }
+    }
+    .red {
+      color: #f00;
+    }
+    .grow {
+      color: #999;
+    }
+  }
+}
+
+.t-c {
+  display: flex;
+  line-height: 84rpx;
+  height: 7%;
+  text-align: center;
+  justify-content: space-around;
+  box-shadow: 0 2rpx 10rpx 4rpx #eee;
+  font-size: 28rpx;
+  view {
+    padding: 0 60rpx;
+    border-bottom: 2rpx solid #fff;
+  }
+  .choose {
+    border-bottom: 2rpx solid #1bb9fc;
+  }
+}
+
+.carousel {
+  width: 100%;
+  height: 58%;
+  .dz {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    line-height: 100rpx;
+    font-size: 28rpx;
+    view {
+      width: 50%;
+      text-align: center;
+    }
+    view:nth-child(2) {
+      color: #666;
+      box-sizing: border-box;
+      padding-left: 106rpx;
+      text-align: left;
+      .icon-xin::before {
+        color: #666;
+        font-size: 40rpx;
+        margin: 0 10rpx;
+      }
+    }
+    .zan {
+      .icon-xin::before {
+        color: #f00 !important;
+      }
+    }
+  }
+
+  .ds-w {
+    margin: 40rpx 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    view {
+      width: 163rpx;
+      line-height: 50rpx;
+      background-color: #eee;
+      color: #000;
+      font-size: 28rpx;
+      text-align: center;
+      border-radius: 8rpx;
+    }
+    .ds {
+      background-color: #1bb9fc;
+      color: #fff;
+      box-shadow: 0 0 6rpx 2rpx #aad7fa;
+    }
+  }
+
+  .moneyIn {
+    position: relative;
+    input {
+      margin: 0 auto;
+      width: 600rpx;
+      line-height: 94rpx;
+      height: 94rpx;
+      box-sizing: border-box;
+      background-color: #eee;
+      padding-left: 60rpx;
+      border-radius: 20rpx;
+    }
+    text {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .icon-jine {
+      left: 90rpx;
+    }
+    .mi-t {
+      right: 90rpx;
+      background-color: #1bb9fc;
+      width: 154rpx;
+      color: #fff;
+      line-height: 74rpx;
+      text-align: center;
+      z-index: 10;
+      border-radius: 20rpx;
+    }
+  }
+
+  .payList {
+    margin: 0 auto;
+    margin-top: 20rpx;
+    width: 600rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    view {
+      width: 169rpx;
+      line-height: 76rpx;
+      margin-top: 20rpx;
+      background-color: #1bb9fc;
+      color: #fff;
+      text-align: center;
+      font-size: 42rpx;
+      //margin-right: 30rpx;
+      border-radius: 20rpx;
+    }
+  }
+
+  .comment {
+    width: 584rpx;
+    margin: 40rpx auto;
+    line-height: 98rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 32rpx;
+    background-color: #1bb9fc;
+    border-radius: 20rpx;
   }
 }

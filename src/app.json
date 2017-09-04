@@ -3,16 +3,18 @@
   // First is default to view
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
   "pages": [
+    "pages/index/index", // 打赏首页
+    "pages/kf/kf", // 意见反馈
+    "pages/setting/setting", // 设置界面
     "pages/comment/comment", // 用户评论
     "pages/ds/ds", // 打赏界面
     "pages/pDetail/pDetail", // 问题详情
     "pages/problem/problem", // 常见问题
     "pages/plDetail/plDetail", // 评论详情
-    "pages/index/index", // 打赏首页
     "pages/plRecord/plRecord", // 评论记录
     "pages/dsRecord/dsRecord", // 打赏记录
     "pages/user/user", // 用户个人中心
-    "pages/detail/detail" // 商店详情页,,,
+    "pages/detail/detail" // 商店详情页,,,,,
     // Dont remove this comment
   ],
   // Window configuration

@@ -72,6 +72,16 @@ Page({
       cur_nav: e.currentTarget.dataset.index
     })
   },
+  // 扫描二维码
+  scancode () {
+    let sc = {
+      onlyFromCamera: true,
+      success (res) {
+        console.log(res)
+      }
+    }
+    wx.scanCode(sc)
+  },
   // 去评价
   goC () {
     wx.navigatorTo({
@@ -81,7 +91,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad () {
+  onLoad (params) {
+    if (params.id) {
+      this.setData({
+        id: params.id,
+        show: true
+      })
+    }
     // TODO: onLoad
   },
 

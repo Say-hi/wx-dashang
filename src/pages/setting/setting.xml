@@ -1,0 +1,1 @@
+<navigator wx:for="{{ lists }}" url="{{ item.url }}" class="iconfont {{ item.ico }}">{{ item.text }}</navigator>

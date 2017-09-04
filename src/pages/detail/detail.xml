@@ -9,7 +9,7 @@
   <image mode="aspectFill" class="br" src="{{ src }}"></image>
   <view class="name">{{ name }}</view>
   <view catchtap="nearShow" class="near">查看附近其他店面</view>
-  <view class="dz">点赞/打赏</view>
+  <navigator open-type="reLaunch" url="../ds/ds?id={{ id }}" class="dz">点赞/打赏</navigator>
 </view>
 
 <swiper class="sw" current="{{ current }}" circular="{{ circular }}">

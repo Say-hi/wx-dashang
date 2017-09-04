@@ -1,37 +1,43 @@
-<view class="top">
-  <view class="t-t">
-    <image class="bg" src="{{ dy.bg }}"></image>
-    <image class="br" src="{{ dy.img }}"></image>
-    <view class="pa iconfont icon-xin red">{{ dy.star }}</view>
-    <view class="pa star"><view wx:for="01234" class="iconfont icon-xing {{ index < dy.lv ? 'red' : 'grow' }}"></view></view>
-  </view>
+<view class="wrap" wx:if="{{ show }}">
+    <view class="top">
+        <view class="t-t">
+            <image class="bg" src="{{ dy.bg }}"></image>
+            <image class="br" src="{{ dy.img }}"></image>
+            <view class="pa iconfont icon-xin red">{{ dy.star }}</view>
+            <view class="pa star"><view wx:for="01234" class="iconfont icon-xing {{ index < dy.lv ? 'red' : 'grow' }}"></view></view>
+        </view>
+    </view>
+
+    <view class="t-c">
+        <view catchtap="chooseNav" data-index="0" class="{{ cur_nav == 0 ? 'choose' : '' }}">点赞</view>
+        <view catchtap="chooseNav" data-index="1" class="{{ cur_nav == 1 ? 'choose' : '' }}">打赏</view>
+    </view>
+
+    <swiper class="carousel" current="{{ cur_nav }}" bindchange="changeCur">
+        <!--点赞-->
+        <swiper-item>
+            <view class="dz" wx:for="{{ dzLists }}">
+                <view>{{ item.text }}</view>
+                <view class="{{ item.zan == 1 ? 'zan' : '' }}" data-index="{{ index }}" catchtap="dz">点赞<text class="iconfont icon-xin">{{ item.number }}</text></view>
+            </view>
+        </swiper-item>
+        <!--打赏-->
+        <swiper-item>
+            <view class="ds-w">
+                <view class="{{ ds_cur == 0 ? 'ds' : '' }}" data-index="0" catchtap="dsChoose">打赏店员</view>
+                <view class="{{ ds_cur == 1 ? 'ds' : '' }}" data-index="1" catchtap="dsChoose">打赏商家</view>
+            </view>
+            <!--广告位置-->
+            <view class="gg"></view>
+            <view class="moneyIn"><text class="iconfont icon-jine"></text><input type="number" placeholder="输入您的打赏金额"/><text class="mi-t">打赏</text></view>
+            <view class="payList">
+                <view catchtap="pay" wx:for="{{ moneyList }}">{{ item }}元</view>
+            </view>
+            <navigator url="../comment/comment?id={{ id }}" catchtap="goC" class="comment">去评价</navigator>
+        </swiper-item>
+    </swiper>
 </view>
 
-<view class="t-c">
-    <view catchtap="chooseNav" data-index="0" class="{{ cur_nav == 0 ? 'choose' : '' }}">点赞</view>
-    <view catchtap="chooseNav" data-index="1" class="{{ cur_nav == 1 ? 'choose' : '' }}">打赏</view>
+<view catchtap="scancode" class="scancode" wx:else>
+    扫码打赏
 </view>
-
-<swiper class="carousel" current="{{ cur_nav }}" bindchange="changeCur">
-<!--点赞-->
-    <swiper-item>
-        <view class="dz" wx:for="{{ dzLists }}">
-            <view>{{ item.text }}</view>
-            <view class="{{ item.zan == 1 ? 'zan' : '' }}" data-index="{{ index }}" catchtap="dz">点赞<text class="iconfont icon-xin">{{ item.number }}</text></view>
-        </view>
-    </swiper-item>
-<!--打赏-->
-    <swiper-item>
-        <view class="ds-w">
-            <view class="{{ ds_cur == 0 ? 'ds' : '' }}" data-index="0" catchtap="dsChoose">打赏店员</view>
-            <view class="{{ ds_cur == 1 ? 'ds' : '' }}" data-index="1" catchtap="dsChoose">打赏商家</view>
-        </view>
-        <!--广告位置-->
-        <view class="gg"></view>
-        <view class="moneyIn"><text class="iconfont icon-jine"></text><input placeholder="输入您的打赏金额"/><text class="mi-t">打赏</text></view>
-        <view class="payList">
-            <view catchtap="pay" wx:for="{{ moneyList }}">{{ item }}元</view>
-        </view>
-        <view catchtap="goC" class="comment">去评价</view>
-    </swiper-item>
-</swiper>

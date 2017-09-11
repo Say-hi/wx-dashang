@@ -16,7 +16,7 @@ Page({
       {
         ico: 'icon-fankui',
         text: '意见反馈',
-        url: '../fk/fk'
+        url: '../kf/kf'
       }
     ]
   },

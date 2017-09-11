@@ -33,49 +33,6 @@ Page({
         star: 123,
         count: 4,
         dj: 1
-      },
-      {
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '乐乐蛋糕',
-        introduce: '超级无敌美味好吃的蛋糕啊，快来尝一尝撒。',
-        level: 3,
-        star: 1232,
-        count: 2,
-        dj: 1
-      },
-      {
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '乐乐蛋糕',
-        introduce: '超级无敌美味好吃的蛋糕啊，快来尝一尝撒。',
-        level: 2,
-        star: 1232,
-        dj: 0
-      },
-      {
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '乐乐蛋糕',
-        introduce: '超级无敌美味好吃的蛋糕啊，快来尝一尝撒。',
-        level: 4,
-        star: 123,
-        count: 4,
-        dj: 1
-      },
-      {
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '乐乐蛋糕',
-        introduce: '超级无敌美味好吃的蛋糕啊，快来尝一尝撒。',
-        level: 3,
-        star: 1232,
-        count: 2,
-        dj: 1
-      },
-      {
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '乐乐蛋糕',
-        introduce: '超级无敌美味好吃的蛋糕啊，快来尝一尝撒。',
-        level: 2,
-        star: 1232,
-        dj: 0
       }
     ],
     nearShop: [

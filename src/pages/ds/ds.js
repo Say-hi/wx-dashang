@@ -14,26 +14,22 @@ Page({
       img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       text: '感谢您的支持',
       star: 2341,
+      id: 1,
       lv: 2
+    },
+    shop: {
+      bg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      text: '感谢您的支持',
+      star: 2341,
+      lv: 2,
+      id: 123
     },
     dzLists: [
       {
         text: '点赞内容1',
         number: 12,
-        zan: 1
-      },
-      {
-        text: '点赞内容2',
-        number: 1232,
-        zan: 1
-      },
-      {
-        text: '点赞内容3',
-        number: 123123
-      },
-      {
-        text: '点赞内容4',
-        number: 1
+        zan: 0
       }
     ],
     moneyList: [1, 5, 10]
@@ -50,12 +46,19 @@ Page({
     list[index]['zan'] = 1
     // list[index]['number'] = ++list[index]['nubmer']
     list[index]['number'] += 1
+    this.data.dy.star += 1
     this.setData({
-      dzLists: list
+      dzLists: list,
+      dy: this.data.dy
     })
   },
   // 打赏选择
   dsChoose (e) {
+    if (this.data.onlyShop && (e.currentTarget.dataset.index * 1 === 0)) {
+      return this.setData({
+        cur_nav: 0
+      })
+    }
     this.setData({
       ds_cur: e.currentTarget.dataset.index
     })
@@ -74,20 +77,25 @@ Page({
   },
   // 扫描二维码
   scancode () {
+    let that = this
     let sc = {
       onlyFromCamera: true,
       success (res) {
         console.log(res)
+        that.setData({
+          onlyShop: false,
+          show: true
+        })
       }
     }
     wx.scanCode(sc)
   },
   // 去评价
-  goC () {
-    wx.navigatorTo({
-      url: `../comment/comment?id=${this.data.id}`
-    })
-  },
+  // goC () {
+  //   wx.navigateTo({
+  //     url: `../comment/comment?id=${this.data.id}`
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -96,6 +104,12 @@ Page({
       this.setData({
         id: params.id,
         show: true
+      })
+    }
+    if (params.type === 'shop') {
+      this.setData({
+        ds_cur: 1,
+        onlyShop: true
       })
     }
     // TODO: onLoad

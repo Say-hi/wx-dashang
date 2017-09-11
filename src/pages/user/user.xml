@@ -5,4 +5,4 @@
 </view>
 <navigator url="../dsRecord/dsRecord" class="u-n iconfont icon-tubiaozhizuomoban">打赏记录</navigator>
 <navigator url="../plRecord/plRecord" class="u-n iconfont icon-pinglun">评论记录</navigator>
-<navigator url="../" class="u-n iconfont icon-tripshezhishi">设置</navigator>
+<navigator url="../setting/setting" class="u-n iconfont icon-tripshezhishi">设置</navigator>

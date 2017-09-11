@@ -16,9 +16,12 @@
     <swiper class="carousel" current="{{ cur_nav }}" bindchange="changeCur">
         <!--点赞-->
         <swiper-item>
-            <view class="dz" wx:for="{{ dzLists }}">
+            <view wx:if="{{ !onlyShop }}" class="dz" wx:for="{{ dzLists }}">
                 <view>{{ item.text }}</view>
                 <view class="{{ item.zan == 1 ? 'zan' : '' }}" data-index="{{ index }}" catchtap="dz">点赞<text class="iconfont icon-xin">{{ item.number }}</text></view>
+            </view>
+            <view catchtap="scancode" class="scancode" wx:if="{{ onlyShop }}">
+                扫店员码-给店员打赏/点赞
             </view>
         </swiper-item>
         <!--打赏-->
@@ -33,7 +36,7 @@
             <view class="payList">
                 <view catchtap="pay" wx:for="{{ moneyList }}">{{ item }}元</view>
             </view>
-            <navigator url="../comment/comment?id={{ id }}" catchtap="goC" class="comment">去评价</navigator>
+            <navigator url="../comment/comment?id={{ id }}" class="comment">去评价</navigator>
         </swiper-item>
     </swiper>
 </view>

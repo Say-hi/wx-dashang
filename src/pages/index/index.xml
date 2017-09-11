@@ -10,7 +10,7 @@
   <view class="address iconfont icon-dingwei">{{ city }}</view>
   <view class="s-s">
     <view class="iconfont icon-sousuo"></view>
-    <input bindconfirm="inputConfirm" bindinput="inputValue" confirm-type="search" data-type="search" placeholder="请输入您需要的商品信息" />
+    <input bindconfirm="inputConfirm" bindinput="inputValue" confirm-type="search" data-type="search" placeholder="请输入您需要的商店信息" />
   </view>
 </view>
 
